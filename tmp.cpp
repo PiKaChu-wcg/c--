@@ -2,10 +2,11 @@
 ////Author       : PiKaChu_wcg
 ////Date         : 2021-08-31 22:17:46
 ////LastEditors  : PiKachu_wcg
-////LastEditTime : 2021-09-03 10:15:04
-////FilePath     : \c++\tmp.cpp
+////LastEditTime : 2022-03-15 15:02:40
+////FilePath     : \c--\tmp.cpp
 ////////////////////////////////////////////////
 #include <bits/stdc++.h>
+#include<iostream>
 #define debug(x) cerr << #x << ":" << x << endl;
 #define fastio               \
     ios::sync_with_stdio(0); \
@@ -72,55 +73,34 @@ ll qpow(ll x, ll k = mod - 2, ll m = mod)
 //!===============================================================================================================
 
 //todo declare some var i need
-int n, m;
-class Solution {
-   public:
-    static const long long maxn = 100;
-    static const long long mod = 1e9 + 7;
-    long long dp[maxn][maxn];
-    bool used[maxn][maxn];
-    int numberOfSets(int n, int k) {
-        long long res = 0;
-        for (int i = k; i <= n; i++) {
-            res += dfs(i, k);
-            res %= mod;
-        }
-        return res;
-    }
-    long long dfs(int n, int k) {
-        if (used[n][k])
-            return dp[n][k];
-        used[n][k] = 1;
-        if (k == 0)
-            return dp[n][k] = 1;
-        if (n == 1 + k)
-            return dp[n][k] = 1;
-        if (n <= k)
-            return dp[n][k] = 0;
-        dp[n][k] = dfs(n - 1, k) + dfs(n - 1, k - 1);
-        dp[n][k] %= mod;
-        return dp[n][k];
-    }
-}t;
+
+
 // todo define the funcs i need
 void solve() {
-    cin >> n >> m;
-    debug(t.numberOfSets(n, m));
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cout << i << endl;
+    }
+    
 }
 //!===============================================================================================================
 
 signed main()
 {
     clock_t c1 = clock();
-#ifdef LOCAL
-    freopen("data/in.in", "r", stdin);
-    freopen("data/out.out", "w", stdout);
-#endif
+    #ifdef LOCAL
+        freopen("data/in.in", "r", stdin);
+        freopen("data/out.out", "w", stdout);
+    #endif
     int T = 1;
     if (mutliinput)
         cin >> T;
     while (T--)
         solve();
     cerr << "Time Used:" << clock() - c1 << "(ms)" << endl;
+    fclose(stdin);
+    fclose(stdout);
     return 0;
 }
